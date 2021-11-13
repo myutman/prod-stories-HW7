@@ -90,4 +90,4 @@ def text_handler(message):
         bot.send_message(chat_id, 'Простите, я Вас не понял :(')
 
 
-bot.polling()
+bot.polling(none_stop=True)
