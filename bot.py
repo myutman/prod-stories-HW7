@@ -87,7 +87,7 @@ def text_handler(message):
         weather = get_weather()
         bot.send_message(chat_id, 'Погода в Санкт-Петербурге ' + weather)
     else:
-        bot.send_message(chat_id, 'Простите, я вам не понял :(')
+        bot.send_message(chat_id, 'Простите, я Вас не понял :(')
 
 
 bot.polling()
