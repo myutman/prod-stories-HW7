@@ -1,1 +1,1 @@
-bot: pip3 install -r requirements.txt && python3 bot.py
+bot: python3 bot1.py
