@@ -20,10 +20,10 @@ with open(".api_token") as inf:
 
 bot = telebot.TeleBot(TOKEN)
 
-model = AutoModel.from_pretrained("DeepPavlov/rubert-base-cased-conversational")
+model = AutoModel.from_pretrained("DeepPavlov/distilrubert-base-cased-conversational")
 print(type(model))
 
-tokenizer = AutoTokenizer.from_pretrained("DeepPavlov/rubert-base-cased-conversational")
+tokenizer = AutoTokenizer.from_pretrained("DeepPavlov/distilrubert-base-cased-conversational")
 classifier = nn.Linear(768, 4)
 classifier.load_state_dict(torch.load("classifier_weights.pts"))
 
@@ -76,7 +76,7 @@ def text_handler(message):
     chat_id = message.chat.id
 
     X = torch.tensor([tokenizer(text)["input_ids"]])
-    model_output = model(X).pooler_output
+    model_output = model(X).last_hidden_state.sum(dim=-2)
     output = int(classifier(model_output)[0].argmax())
 
     if output == 0:
