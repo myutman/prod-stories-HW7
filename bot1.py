@@ -1,16 +1,4 @@
-import time
-
-import requests
-
-import torch
-from torch import nn
-
-from transformers import AutoModel, AutoTokenizer
-
 import telebot
-import parser
-
-import json
 
 
 with open(".tg_token") as inf:
