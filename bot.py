@@ -28,9 +28,9 @@ classifier = nn.Linear(768, 4)
 classifier.load_state_dict(torch.load("classifier_weights.pts"))
 
 
-@bot.message_handler(commands=['start', 'go'])
+@bot.message_handler(commands=['start'])
 def start_handler(message):
-    bot.send_message(message.chat.id, 'Привет, когда я вырасту, я буду парсить заголовки с Хабра')
+    bot.send_message(message.chat.id, 'Здравствуйте! Я показываю погоду в Санкт-Петербурге. Спросите меня "погода в спб"')
 
 
 def get_actual_weather_info():
