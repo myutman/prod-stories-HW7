@@ -76,7 +76,7 @@ def text_handler(message):
     chat_id = message.chat.id
 
     X = torch.tensor([tokenizer(text)["input_ids"]])
-    model_output = model(X).last_hidden_state.sum(dim=-2)
+    model_output = model(X).last_hidden_state.mean(dim=-2)
     output = int(classifier(model_output)[0].argmax())
 
     if output == 0:
